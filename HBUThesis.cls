@@ -15,7 +15,7 @@
 \DeclareOption{forprint}{\printtrue}
 \newif\ifsmd\smdfalse
 \DeclareOption{smd}{\smdtrue}
-\ProcessOptions
+\ProcessOptions\relax
 
 % 判断打印样式
 \iflib
@@ -26,7 +26,7 @@
 
 % 传递隐式选项
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
-\ProcessOptions
+\ProcessOptions\relax
 
 % ================
 % packages setting
@@ -58,26 +58,28 @@
 \newtoks\fenleihao                      %中图分类号
 \newtoks\xxdaima                        %学校代码
 \newtoks\StudentNumber                  %学号
-\newtoks\major                          %学科专业中文名
-\newtoks\Emajor                         %学科专业英文名
-\newtoks\speciality                     %中文研究方向
-\newtoks\Especiality                    %英文研究方向
+\newtoks\major                          %中文学位类别
+\newtoks\Emajor                         %英文学位类别
+\newtoks\speciality                     %中文学科专业
+\newtoks\Especiality                    %英文学科专业
 \newtoks\date                           %中文日期
 \newtoks\Edate                          %英文日期
 \newtoks\Etitle                         %英文题目
-\newtoks\author                         %作者中文名
-\newtoks\Eauthor                        %作者英文名
-\newtoks\supervisor                     %指导教师中文名
-\newtoks\Esupervisor                    %指导教师英文名
-\newtoks\Schoolname                     %学院中文名
-\newtoks\ESchoolname                    %学院英文名
+\newtoks\Eauthor                        %英文作者
+\newtoks\supervisor                     %中文指导教师
+\newtoks\Esupervisor                    %英文指导教师
+\newtoks\collageName                     %中文学院名
+\newtoks\EcollageName                    %英文学院名
 \newtoks\UDC                            %《国际十进制分类法UDC》的类号
 
 % ================================
 % creat cover
 % use 'makecover' to creat a cover
 % ================================
-% TODO: 更新文内 tokens ，完成字号以及间距的调整，弹性间距仍待研究，表格的书写仍待研究
+% TODO: 
+%   完成字号以及间距的调整
+%   弹性间距仍待研究
+%   表格的书写仍待研究
 
 \def\makecover{%
   \thispagestyle{empty}%
@@ -88,10 +90,10 @@
     \begin{tabular}{|lp{3cm}|lp{15cm}|}
       \includegraphics[width=1.5cm]{pic/hbu-logo.png} & {\includegraphics[width=4.25cm]{hbu-title.png}} \\
       {} & {} \\
-      密\hfill 级：                                   & {\the\miji}          \\
-      分\hfill 类\hfill 号：                          & {\the\fenleihao}     \\
-      学\hfill 校\hfill 代\hfill 码：                 & {\the\bianhao}       \\
-      学\hfill 号：                                   & {\the\StudentNumber} \\
+      密\hfill 级：                   & {\the\miji}          \\
+      分\hfill 类\hfill 号：          & {\the\fenleihao}     \\
+      学\hfill 校\hfill 代\hfill 码： & {\the\xxdaima}       \\
+      学\hfill 号：                   & {\the\StudentNumber} \\
     \end{tabular}
   }
   \par
@@ -106,7 +108,7 @@
   \fi}\\
   \vspace{2cm}
   % 论文标题
-  {\setlength{\baselineskip}{1\baselineskip}%
+  {\setlength{\parindent}{20pt}
   \songti \zihao{1} \@title \par}%
   \vfill
   % \vspace{2.7cm plus 5.8cm miuns 1.7cm}
@@ -114,11 +116,11 @@
   \ifsmd 
     \begin{tabular}{llp{6cm}l}
       \raisebox{-3ex}[0pt]{\makebox[4.8cm][s]{学\hfill 位\hfill 申\hfill 请\hfill 人: }} & {\songti {}\raisebox{-3ex}[0pt]{\@author}\hfill{}} \\
-      \raisebox{-3ex}[0pt]{\makebox[4.8cm][s]{指\hfill 导\hfill 教\hfill 师：}}          & {\songti{}\raisebox{-3ex}[0pt]{\the\Csupervisor}\hfill{}} \\
-      \raisebox{-3ex}[0pt]{\makebox[4.8cm][s]{学\hfill 位\hfill 类\hfill 别: }}          & {\songti {}\raisebox{-3ex}[0pt]{\the\Cmajor}\hfill{}} \\
-      \raisebox{-3ex}[0pt]{\makebox[4.8cm][s]{学\hfill 科\hfill 专\hfill 业: }}          & {\songti {}\raisebox{-3ex}[0pt]{\the\Cmajor}\hfill{}} \\
-      \raisebox{-3ex}[0pt]{\makebox[4.8cm][s]{院\hfill 系\hfill 名\hfill 称: }}          & {\songti {}\raisebox{-3ex}[0pt]{\the\Cmajor}\hfill{}} \\
-      \raisebox{-3ex}[0pt]{\makebox[4.8cm][s]{答\hfill 辩\hfill 日\hfill 期: }}          & {\songti {}\raisebox{-3ex}[0pt]{\the\Cmajor}\hfill{}} \\
+      \raisebox{-3ex}[0pt]{\makebox[4.8cm][s]{指\hfill 导\hfill 教\hfill 师：}}          & {\songti{}\raisebox{-3ex}[0pt]{\the\supervisor}\hfill{}} \\
+      \raisebox{-3ex}[0pt]{\makebox[4.8cm][s]{学\hfill 位\hfill 类\hfill 别: }}          & {\songti {}\raisebox{-3ex}[0pt]{\the\major}\hfill{}} \\
+      \raisebox{-3ex}[0pt]{\makebox[4.8cm][s]{学\hfill 科\hfill 专\hfill 业: }}          & {\songti {}\raisebox{-3ex}[0pt]{\the\speciality}\hfill{}} \\
+      \raisebox{-3ex}[0pt]{\makebox[4.8cm][s]{院\hfill 系\hfill 名\hfill 称: }}          & {\songti {}\raisebox{-3ex}[0pt]{\the\collageName}\hfill{}} \\
+      \raisebox{-3ex}[0pt]{\makebox[4.8cm][s]{答\hfill 辩\hfill 日\hfill 期: }}          & {\songti {}\raisebox{-3ex}[0pt]{\the\date}\hfill{}} \\
     \end{tabular}
   \else
     \begin{tabular}{p{6cm}l}
