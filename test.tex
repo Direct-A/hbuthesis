@@ -1,10 +1,42 @@
 \documentclass[a4paper, 12pt, fontset=windows]{ctexbook}
-\title{一个标题}
 \author{syc}
 \begin{document}
-\maketitle
-\newpage
-
+\thispagestyle{empty}%
+\vspace*{5mm}%
+\leavevmode
+{\fangsong \zihao{4}%
+% \setlength{\parindent}{10pt}
+  \begin{tabular}{|lp{3cm}|lp{15cm}|}
+    \includegraphics[width=1.5cm]{pic/hbu-logo.png} & {\includegraphics[width=4.25cm]{hbu-title.png}} \\
+    {} & {} \\
+    密\hfill 级：                   & {\the\miji}          \\
+    分\hfill 类\hfill 号：          & {\the\fenleihao}     \\
+    学\hfill 校\hfill 代\hfill 码： & {\the\xxdaima}       \\
+    学\hfill 号：                   & {\the\StudentNumber} \\
+  \end{tabular}
+}
+\par
+\vspace{15mm}%
+% 封面标题
+{\heiti \zihao{-0}
+\setlength{\parindent}{20pt}
+硕士学位论文%
+\vspace{2cm}
+% 论文标题
+{\setlength{\parindent}{20pt}
+\songti \zihao{1} \@title \par}%
+\vfill
+% \vspace{2.7cm plus 5.8cm miuns 1.7cm}
+{\songti\zihao{4}
+  \begin{tabular}{llp{6cm}l}
+    \raisebox{-3ex}[0pt]{\makebox[4.8cm][s]{学\hfill 位\hfill 申\hfill 请\hfill 人: }} & {\songti {}\raisebox{-3ex}[0pt]{\@author}\hfill{}} \\
+    \raisebox{-3ex}[0pt]{\makebox[4.8cm][s]{指\hfill 导\hfill 教\hfill 师：}}          & {\songti{}\raisebox{-3ex}[0pt]{\the\supervisor}\hfill{}} \\
+    \raisebox{-3ex}[0pt]{\makebox[4.8cm][s]{学\hfill 位\hfill 类\hfill 别: }}          & {\songti {}\raisebox{-3ex}[0pt]{\the\major}\hfill{}} \\
+    \raisebox{-3ex}[0pt]{\makebox[4.8cm][s]{学\hfill 科\hfill 专\hfill 业: }}          & {\songti {}\raisebox{-3ex}[0pt]{\the\speciality}\hfill{}} \\
+    \raisebox{-3ex}[0pt]{\makebox[4.8cm][s]{院\hfill 系\hfill 名\hfill 称: }}          & {\songti {}\raisebox{-3ex}[0pt]{\the\collageName}\hfill{}} \\
+    \raisebox{-3ex}[0pt]{\makebox[4.8cm][s]{答\hfill 辩\hfill 日\hfill 期: }}          & {\songti {}\raisebox{-3ex}[0pt]{\the\date}\hfill{}} \\
+  \end{tabular}
+}
 hello, world
 
 你好，世界
