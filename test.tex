@@ -1,44 +1,43 @@
 \documentclass[a4paper, 12pt, fontset=windows]{ctexbook}
+\title{TITLE FOR TEST}
 \author{syc}
+\usepackage{layout}
+\usepackage[top=34mm, bottom=25mm, left=25mm, right=25mm, marginparwidth=20mm,]{geometry}
+\usepackage{fancyhdr,graphicx}
+\newCJKfontfamily\FZXBSong{FZXiaoBiaoSong-B05S}
 \begin{document}
-\thispagestyle{empty}%
-\vspace*{5mm}%
-\leavevmode
-{\fangsong \zihao{4}%
-% \setlength{\parindent}{10pt}
-  \begin{tabular}{|lp{3cm}|lp{15cm}|}
-    \includegraphics[width=1.5cm]{pic/hbu-logo.png} & {\includegraphics[width=4.25cm]{hbu-title.png}} \\
-    {} & {} \\
-    密\hfill 级：                   & {\the\miji}          \\
-    分\hfill 类\hfill 号：          & {\the\fenleihao}     \\
-    学\hfill 校\hfill 代\hfill 码： & {\the\xxdaima}       \\
-    学\hfill 号：                   & {\the\StudentNumber} \\
-  \end{tabular}
+\def\makecover{
+  \linespread{1.5}
+  ~\newline
+  \raisebox{3pt}{\includegraphics[width=0.1\textwidth]{pic/hbu-logo.png}}~~~~~~\includegraphics[width=0.26\textwidth]{pic/hbu-title.png}
+  \newline
+  \vspace{-15mm}
+  \songti
+  \zihao{-4}
+  \begin{table}[h]
+    \begin{tabular}{cl}
+      \makebox[5em][s]{密\hspace{\fill}级：}\linebreak & 1\\
+      \makebox[5em][s]{分\hspace{\fill}类\hspace{\fill}号：}\linebreak & 1\\
+      \makebox[5em][s]{学\hspace{\fill}校\hspace{\fill}代\hspace{\fill}码：}\linebreak & 1\\
+      \makebox[5em][s]{学\hspace{\fill}号：}\linebreak & 1\\
+    \end{tabular}
+  \end{table}
+  \newline
+  \heiti
+  \zihao{-0}
+  硕士学位论文
+  \newline
+  \begin{table}[h]
+    \begin{tabular}{p{17cm}}
+      \noindent
+      \zihao{1}
+      \FZXBSong
+      何首乌饮抑制生精细胞凋亡的何首乌饮抑制生精细胞凋亡的何首乌饮抑制生精细胞凋亡的
+    \end{tabular}
+  \end{table}
 }
-\par
-\vspace{15mm}%
-% 封面标题
-{\heiti \zihao{-0}
-\setlength{\parindent}{20pt}
-硕士学位论文%
-\vspace{2cm}
-% 论文标题
-{\setlength{\parindent}{20pt}
-\songti \zihao{1} \@title \par}%
-\vfill
-% \vspace{2.7cm plus 5.8cm miuns 1.7cm}
-{\songti\zihao{4}
-  \begin{tabular}{llp{6cm}l}
-    \raisebox{-3ex}[0pt]{\makebox[4.8cm][s]{学\hfill 位\hfill 申\hfill 请\hfill 人: }} & {\songti {}\raisebox{-3ex}[0pt]{\@author}\hfill{}} \\
-    \raisebox{-3ex}[0pt]{\makebox[4.8cm][s]{指\hfill 导\hfill 教\hfill 师：}}          & {\songti{}\raisebox{-3ex}[0pt]{\the\supervisor}\hfill{}} \\
-    \raisebox{-3ex}[0pt]{\makebox[4.8cm][s]{学\hfill 位\hfill 类\hfill 别: }}          & {\songti {}\raisebox{-3ex}[0pt]{\the\major}\hfill{}} \\
-    \raisebox{-3ex}[0pt]{\makebox[4.8cm][s]{学\hfill 科\hfill 专\hfill 业: }}          & {\songti {}\raisebox{-3ex}[0pt]{\the\speciality}\hfill{}} \\
-    \raisebox{-3ex}[0pt]{\makebox[4.8cm][s]{院\hfill 系\hfill 名\hfill 称: }}          & {\songti {}\raisebox{-3ex}[0pt]{\the\collageName}\hfill{}} \\
-    \raisebox{-3ex}[0pt]{\makebox[4.8cm][s]{答\hfill 辩\hfill 日\hfill 期: }}          & {\songti {}\raisebox{-3ex}[0pt]{\the\date}\hfill{}} \\
-  \end{tabular}
-}
-hello, world
-
-你好，世界
+\makecover
+\newpage
+\layout
 
 \end{document}

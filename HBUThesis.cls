@@ -1,34 +1,71 @@
 % !TEX encoding = UTF-8 Unicode
 % !TEX TS-program = xelatex
 % !BIB program = biber
-
 % ==============================================
 % this is a template for hebei university thesis
+% ==============================================
+% Filename: HBUThesis.cls
+% Author: Song Yicheng - songyicheng0@gmail.com
+% Created: 2020-03-08 13:11
+% Last modified: 2020-05-03 00:29
 % ==============================================
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesPackage{HBUThesis}[2020/03/19 0.1 HeBei University Thesis Template for Master Candidate]
 
-\LoadClass[a4paper, twoside, openany]{ctexbook}
+% ----- KVoptions Packages -----
+\RequirePackage{kvoptions}
+\RequirePackage{etoolbox}
+\SetupKeyvalOptions{family=SDU, prefix=SDU@opt@, setkeys=\kvsetkeys}
+\newcommand{\ekv}[1]{\kvsetkeys{SDU}{#1}}
 
-% 传递隐式选项
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
-\ProcessOptions\relax
+% ----- Declare Options -----
+% ----- CHSstyle
+\DeclareBoolOption[true]{chsstyle}
+\DeclareComplementaryOption{nochsstyle}{chsstyle}
+% ----- draft/print
+\DeclareBoolOption[false]{print}
+\DeclareComplementaryOption{noprint}{print}
+% ----- double/single
+\DeclareBoolOption[true]{double}
+\DeclareComplementaryOption{single}{double}
+% ----- Default Options
+\DeclareDefaultOption{\PassOptionsToPackage{\CurrentOption}{ctexbook}}
+% A4纸张大小，书记格式
+\LoadClass[a4paper, 12pt]{ctexbook}
+\ProcessKeyvalOptions*\relax
+
+\ifSDU@opt@double\relax\else
+  \PassOptionsToClass{openany}{book}
+\fi
 
 % ================
 % packages setting
 % ================
 
+% ----- pages setting -----
 \RequirePackage[
   top=3.4cm,
   bottom=2.5cm,
   left=2.5cm,
   right=2.5cm,
-  xetex]{geometry}                      % pages setting
-\RequirePackage{graphicx}               % 图形
-\graphicspath{{pic/}}                   % 图片放在 pic 文件夹.
-\RequirePackage{tabular}
-\RequirePackage{color,xcolor}           %支持彩色
+  xetex]{geometry}
+
+% ----- 图形 -----
+\RequirePackage{graphicx}
+% ----- 图片放在 pic 文件夹 -----
+\graphicspath{{pic/}}
+
+% ----- 支持彩色 -----
+\RequirePackage{color,xcolor}
+
+\RequirePackage{fancyhdr,graphicx}
 \RequirePackage{url}
+
+% ----- KVoptions Packages -----
+\RequirePackage{kvoptions}
+\RequirePackage{etoolbox}
+\SetupKeyvalOptions{family=SDU, prefix=SDU@opt@, setkeys=\kvsetkeys}
+\renewcommand{\ekv}[1]{\kvsetkeys{SDU}{#1}}
 
 % ============
 % creat tokens
@@ -37,7 +74,7 @@
 \newtoks\miji                           %密级
 \newtoks\fenleihao                      %中图分类号
 \newtoks\xxdaima                        %学校代码
-\newtoks\StudentNumber                  %学号
+\newtoks\StuNum                         %学号
 \newtoks\major                          %中文学位类别
 \newtoks\Emajor                         %英文学位类别
 \newtoks\speciality                     %中文学科专业
@@ -52,49 +89,49 @@
 \newtoks\EcollageName                   %英文学院名
 \newtoks\UDC                            %《国际十进制分类法UDC》的类号
 
+
+% ===============
+% set font family
+% ===============
+\newCJKfontfamily\FZXBSong{FZXiaoBiaoSong-B05S}
+
 % ================================
 % creat cover
 % use 'makecover' to creat a cover
 % ================================
 % TODO: 
-%   完成字号以及间距的调整
-%   弹性间距仍待研究
-%   表格的书写仍待研究
+%   段落间距出现错误，考虑使用垂直模式
+%   
 
-\def\makecover{%
-  \thispagestyle{empty}%
-  \vspace*{5mm}%
-  \leavevmode
-  {\fangsong \zihao{4}%
-  % \setlength{\parindent}{10pt}
-    \begin{tabular}{|lp{3cm}|lp{15cm}|}
-      \includegraphics[width=1.5cm]{pic/hbu-logo.png} & {\includegraphics[width=4.25cm]{hbu-title.png}} \\
-      {} & {} \\
-      密\hfill 级：                   & {\the\miji}          \\
-      分\hfill 类\hfill 号：          & {\the\fenleihao}     \\
-      学\hfill 校\hfill 代\hfill 码： & {\the\xxdaima}       \\
-      学\hfill 号：                   & {\the\StudentNumber} \\
+\def\makecover{
+  % ----- logo & title
+  \linespread{1.5}
+  ~\newline
+  \includegraphics[width=0.1\textwidth]{pic/hbu-logo.png}~~~~~~\includegraphics[width=0.26\textwidth]{pic/hbu-title.png}
+  \newline
+  % ----- 密级，分类号，学校代码和学号
+  \vspace{-2.5cm}
+  \songti
+  \zihao{-4}
+  \begin{table}[h]
+    \begin{tabular}{cl}
+      \makebox[5em][s]{密\hspace{\fill}级：} & \the\miji\\
+      \makebox[5em][s]{分\hspace{\fill}类\hspace{\fill}号：} & \the\fenleihao\\
+      \makebox[5em][s]{学\hspace{\fill}校\hspace{\fill}代\hspace{\fill}码：} & \the\xxdaima\\
+      \makebox[5em][s]{学\hspace{\fill}号：} & \the\StuNum\\
     \end{tabular}
-  }
-  \par
-  \vspace{15mm}%
-  % 封面标题
-  {\heiti \zihao{-0}
-  \setlength{\parindent}{20pt}
-  硕士学位论文%
-  \vspace{2cm}
-  % 论文标题
-  {\setlength{\parindent}{20pt}
-  \songti \zihao{1} \@title \par}%
-  \vfill
-  % \vspace{2.7cm plus 5.8cm miuns 1.7cm}
-  {\songti\zihao{4}
-    \begin{tabular}{llp{6cm}l}
-      \raisebox{-3ex}[0pt]{\makebox[4.8cm][s]{学\hfill 位\hfill 申\hfill 请\hfill 人: }} & {\songti {}\raisebox{-3ex}[0pt]{\@author}\hfill{}} \\
-      \raisebox{-3ex}[0pt]{\makebox[4.8cm][s]{指\hfill 导\hfill 教\hfill 师：}}          & {\songti{}\raisebox{-3ex}[0pt]{\the\supervisor}\hfill{}} \\
-      \raisebox{-3ex}[0pt]{\makebox[4.8cm][s]{学\hfill 位\hfill 类\hfill 别: }}          & {\songti {}\raisebox{-3ex}[0pt]{\the\major}\hfill{}} \\
-      \raisebox{-3ex}[0pt]{\makebox[4.8cm][s]{学\hfill 科\hfill 专\hfill 业: }}          & {\songti {}\raisebox{-3ex}[0pt]{\the\speciality}\hfill{}} \\
-      \raisebox{-3ex}[0pt]{\makebox[4.8cm][s]{院\hfill 系\hfill 名\hfill 称: }}          & {\songti {}\raisebox{-3ex}[0pt]{\the\collageName}\hfill{}} \\
-      \raisebox{-3ex}[0pt]{\makebox[4.8cm][s]{答\hfill 辩\hfill 日\hfill 期: }}          & {\songti {}\raisebox{-3ex}[0pt]{\the\date}\hfill{}} \\
+  \end{table}
+  \newline
+  \heiti
+  \zihao{-0}
+  硕士学位论文
+  \newline
+  \begin{table}[h]
+    \begin{tabular}{p{17cm}}
+      \noindent
+      \zihao{1}
+      \FZXBSong
+      \@title
     \end{tabular}
-  }
+  \end{table}
+}
