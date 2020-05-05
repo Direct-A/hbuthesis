@@ -1,9 +1,10 @@
-\documentclass[a4paper, 12pt, fontset=windows, draf]{ctexbook}
+\documentclass[a4paper, 12pt, fontset=windows, draft]{ctexbook}
 \title{TITLE FOR TEST}
 \author{syc}
 \usepackage{layout}
 \usepackage[top=34mm, bottom=25mm, left=25mm, right=25mm, marginparwidth=20mm,]{geometry}
-\usepackage{fancyhdr,graphicx}
+\usepackage{fancyhdr,graphicx,amssymb}
+\usepackage{amssymb}
 \newCJKfontfamily\FZXBSong{FZXiaoBiaoSong-B05S}
 \newCJKfontfamily\TimesNR{Times New Roman}
 \begin{document}
@@ -18,10 +19,10 @@
     \songti
     \zihao{-4}
     \begin{tabular}{cl}
-      \makebox[5em][s]{密\hspace{\fill}级：} & 1\\
-      \makebox[5em][s]{分\hspace{\fill}类\hspace{\fill}号：} & 1\\
-      \makebox[5em][s]{学\hspace{\fill}校\hspace{\fill}代\hspace{\fill}码：} & 1\\
-      \makebox[5em][s]{学\hspace{\fill}号：} & 1\\
+      \makebox[5em][s]{密\hspace{\fill}级：}                                 & 1 \\
+      \makebox[5em][s]{分\hspace{\fill}类\hspace{\fill}号：}                 & 1 \\
+      \makebox[5em][s]{学\hspace{\fill}校\hspace{\fill}代\hspace{\fill}码：} & 1 \\
+      \makebox[5em][s]{学\hspace{\fill}号：}                                 & 1 \\
     \end{tabular}
   \end{table}
   \newline
@@ -48,12 +49,12 @@
     \heiti
     \zihao{4}
     \begin{tabular}{cl}
-      \makebox[6em][s]{学\hspace{\fill}位\hspace{\fill}申\hspace{\fill}请\hspace{\fill}人：} & 1\\
-      \makebox[6em][s]{指\hspace{\fill}导\hspace{\fill}教\hspace{\fill}师：} & 1\\
-      \makebox[6em][s]{学\hspace{\fill}位\hspace{\fill}类\hspace{\fill}别：} & 1\\
-      \makebox[6em][s]{学\hspace{\fill}科\hspace{\fill}专\hspace{\fill}业：} & 1\\
-      \makebox[6em][s]{院\hspace{\fill}系\hspace{\fill}名\hspace{\fill}称：} & 1\\
-      \makebox[6em][s]{答\hspace{\fill}辩\hspace{\fill}日\hspace{\fill}期：} & 1\\
+      \makebox[6em][s]{学\hspace{\fill}位\hspace{\fill}申\hspace{\fill}请\hspace{\fill}人：} & 1 \\
+      \makebox[6em][s]{指\hspace{\fill}导\hspace{\fill}教\hspace{\fill}师：}                 & 1 \\
+      \makebox[6em][s]{学\hspace{\fill}位\hspace{\fill}类\hspace{\fill}别：}                 & 1 \\
+      \makebox[6em][s]{学\hspace{\fill}科\hspace{\fill}专\hspace{\fill}业：}                 & 1 \\
+      \makebox[6em][s]{院\hspace{\fill}系\hspace{\fill}名\hspace{\fill}称：}                 & 1 \\
+      \makebox[6em][s]{答\hspace{\fill}辩\hspace{\fill}日\hspace{\fill}期：}                 & 1 \\
     \end{tabular}
   \end{table}
   \newpage
@@ -90,25 +91,137 @@
     \linespread{1.75}
     \zihao{4}
     \centering
-      \begin{tabular}{rl}
-        Candidate: %
-        & 1 \\
-        Supervisor: %
-        & 1 \\
-        Academic Degree Applied for: %
-        & 1 \\
-        Specialty: %
-        & 1 \\
-        University: %
-        & 1 \\
-        Date of Oral Examination: %
-        & 1 \\
-      \end{tabular}
+    \begin{tabular}{rl}
+      Candidate: %
+       & 1 \\
+      Supervisor: %
+       & 1 \\
+      Academic Degree Applied for: %
+       & 1 \\
+      Specialty: %
+       & 1 \\
+      University: %
+       & 1 \\
+      Date of Oral Examination: %
+       & 1 \\
+    \end{tabular}
   \end{table}
   \newpage
 }
+\def\orgState{
+  \linespread{1.75}
+  \begin{center}
+    \heiti
+    \zihao{-2}
+    \vskip1cm
+    河北大学\\
+    \zihao{3}
+    学位论文独创性声明
+  \end{center}
+  \vbox{
+    \vskip1cm
+    \setlength{\parindent}{2em}
+    \songti
+    \zihao{-4}
+    \par
+    本人郑重声明：所呈交的学位论文，是本人在导师指导下进行的研究工作及取得的研究成果。
+    尽我所知，除了文中特别加以标注和致谢的地方外，论文中不包含其他人已经发表或撰写的研究成果，也不包含为获得河北大学或其他教育机构的学位或证书所使用过的材料。
+    与我一同工作的同志对本研究所做的任何贡献均已在论文中作了明确的说明并表示了致谢。
+  }
+  \vbox{
+    \vskip1.5cm
+    \noindent
+    \songti
+    作者签名：\uline{\hspace{12em}}
+    \hspace{\fill}
+    日期：\uline{\hspace{4em}}年\uline{\hspace{2em}}月\uline{\hspace{2em}}日
+  }
+  \vbox{
+    \vskip2cm
+    \heiti
+    \zihao{3}
+    \begin{center}
+      学位论文使用授权声明
+    \end{center}
+  }
+  \par
+  \vbox{
+    \vskip1cm
+    \songti
+    \zihao{-4}
+    本人完全了解河北大学有关保留、使用学位论文的规定，即：学校有权保留并向国家有关部门或机构送交论文的复印件和电子版，允许论文被查阅和借阅。
+    学校可以公布论文的全部或部分内容，可以采用影印、缩印或其他复制手段保存论文。
+    \par
+    本学位论文属于\par
+    1、保密 $\square$ ，在\uline{\hspace{4em}}年\uline{\hspace{2em}}月\uline{\hspace{2em}}日解密后适用本授权声明。\par
+    2、不保密 $\square$ 。\par
+  （ 请在以上相应方格内打“√” ）
+  }
+  \vbox{
+    \vskip1.5cm
+    \noindent
+    \songti
+    作者签名：\uline{\hspace{12em}}
+    \hspace{\fill}
+    日期：\uline{\hspace{4em}}年\uline{\hspace{2em}}月\uline{\hspace{2em}}日\\
+    导师签名：\uline{\hspace{12em}}
+    \hspace{\fill}
+    日期：\uline{\hspace{4em}}年\uline{\hspace{2em}}月\uline{\hspace{2em}}日
+  }
+  \newpage
+  \begin{center}
+    \heiti
+    \zihao{3}
+    保护知识产权声明
+  \end{center}
+  \par
+  \vbox{
+    \vskip1cm
+    \songti
+    \zihao{-4}
+    本人为申请河北大学学位所提交的题目为
+    （title）
+    的学位论文，是我在导师
+    （\ 教授）
+    指导下取得的研究成果，研究工作及取得的研究成果是在河北大学所提供的研究经费及导师的研究经费资助下完成的。
+    本人完全了解并严格遵守中华人民共和国为保护知识产权所制定的各项法律、行政法规以及河北大学的相关规定。
+
+    本人声明如下：本论文的成果归河北大学所有，未经征得指导教师和河北大学的书面同意和授权，本人保证不以任何形式公开和传播科研成果和科研工作内容。
+    如果违反本声明，本人愿意承担相应法律责任。
+    \newline
+    \vskip2cm
+    \noindent
+    声明人：\uline{\hspace{12em}}
+    \hspace{\fill}
+    日期：\uline{\hspace{4em}}年\uline{\hspace{2em}}月\uline{\hspace{2em}}日\\
+  }
+  \linespread{2.5}
+  \vbox{
+    \vskip8cm
+    \songti
+    \zihao{-4}
+    \noindent
+    作者签名：\uline{\hspace{12em}}
+    \hspace{\fill}
+    日期：\uline{\hspace{4em}}年\uline{\hspace{2em}}月\uline{\hspace{2em}}日
+    \newline
+    导师签名：\uline{\hspace{12em}}
+    \hspace{\fill}
+    日期：\uline{\hspace{4em}}年\uline{\hspace{2em}}月\uline{\hspace{2em}}日
+  }
+}
 \makecover
 \makeEncover
-\layout
+\orgState
+\newpage
+\hbox{
+  \songti
+  指导下取得的研究成果，研究工作及取得的研究成果是在河北大学所提供的研究经费及导师的研究经费资助下完成的。
+  本人完全了解并严格遵守中华人民共和国为保护知识产权所制定的各项法律、行政法规以及河北大学的相关规定。
+
+  本人声明如下：本论文的成果归河北大学所有，未经征得指导教师和河北大学的书面同意和授权，本人保证不以任何形式公开和传播科研成果和科研工作内容。
+  如果违反本声明，本人愿意承担相应法律责任。
+}
+% \layout
 
 \end{document}

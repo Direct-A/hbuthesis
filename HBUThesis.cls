@@ -60,6 +60,7 @@
 
 \RequirePackage{fancyhdr,graphicx}
 \RequirePackage{url}
+\RequirePackage{amssymb}
 
 % ----- KVoptions Packages -----
 \RequirePackage{kvoptions}
@@ -159,6 +160,7 @@
   % ----- 单双面判断
   % ~\newpage
 }
+
 % ----- 英文封面
 \def\makeEncover{
   \TimesNR
@@ -214,4 +216,108 @@
   \newpage
   % ----- 单双面判断
   % ~\newpage
+}
+
+% ----- 独创性声明 & 知识产权声明
+\def\orgState{
+  % ----- 独创性声明
+  \linespread{1.75}
+  \begin{center}
+    \heiti
+    \zihao{-2}
+    \vskip1cm
+    河北大学\\
+    \zihao{3}
+    学位论文独创性声明
+  \end{center}
+  \vbox{
+    \vskip1cm
+    \setlength{\parindent}{2em}
+    \songti
+    \zihao{-4}
+    \par
+    本人郑重声明：所呈交的学位论文，是本人在导师指导下进行的研究工作及取得的研究成果。
+    尽我所知，除了文中特别加以标注和致谢的地方外，论文中不包含其他人已经发表或撰写的研究成果，也不包含为获得河北大学或其他教育机构的学位或证书所使用过的材料。
+    与我一同工作的同志对本研究所做的任何贡献均已在论文中作了明确的说明并表示了致谢。
+  }
+  \vbox{
+    \vskip1.5cm
+    \noindent
+    \songti
+    作者签名：\uline{\hspace{12em}}
+    \hspace{\fill}
+    日期：\uline{\hspace{4em}}年\uline{\hspace{2em}}月\uline{\hspace{2em}}日
+  }
+  \vbox{
+    \vskip2cm
+    \heiti
+    \zihao{3}
+    \begin{center}
+      学位论文使用授权声明
+    \end{center}
+  }
+  \par
+  \vbox{
+    \vskip1cm
+    \songti
+    \zihao{-4}
+    本人完全了解河北大学有关保留、使用学位论文的规定，即：学校有权保留并向国家有关部门或机构送交论文的复印件和电子版，允许论文被查阅和借阅。
+    学校可以公布论文的全部或部分内容，可以采用影印、缩印或其他复制手段保存论文。
+    \par
+    本学位论文属于\par
+    1、保密 $\square$ ，在\uline{\hspace{4em}}年\uline{\hspace{2em}}月\uline{\hspace{2em}}日解密后适用本授权声明。\par
+    2、不保密 $\square$ 。\par
+    （ 请在以上相应方格内打“√” ）
+  }
+  \vbox{
+    \vskip1.5cm
+    \noindent
+    \songti
+    作者签名：\uline{\hspace{12em}}
+    \hspace{\fill}
+    日期：\uline{\hspace{4em}}年\uline{\hspace{2em}}月\uline{\hspace{2em}}日\\
+    导师签名：\uline{\hspace{12em}}
+    \hspace{\fill}
+    日期：\uline{\hspace{4em}}年\uline{\hspace{2em}}月\uline{\hspace{2em}}日
+  }
+  \newpage
+  % ----- 知识产权声明
+  \begin{center}
+    \heiti
+    \zihao{3}
+    保护知识产权声明
+  \end{center}
+  \par
+  \vbox{
+    \vskip1cm
+    \songti
+    \zihao{-4}
+    本人为申请河北大学学位所提交的题目为
+    （\@title）
+    的学位论文，是我在导师
+    （\the\supervisor~教授）
+    指导下取得的研究成果，研究工作及取得的研究成果是在河北大学所提供的研究经费及导师的研究经费资助下完成的。
+    本人完全了解并严格遵守中华人民共和国为保护知识产权所制定的各项法律、行政法规以及河北大学的相关规定。
+
+    本人声明如下：本论文的成果归河北大学所有，未经征得指导教师和河北大学的书面同意和授权，本人保证不以任何形式公开和传播科研成果和科研工作内容。
+    如果违反本声明，本人愿意承担相应法律责任。
+    \newline
+    \vskip1.5cm
+    \noindent
+    声明人：\uline{\hspace{12em}}
+    \hspace{\fill}
+    日期：\uline{\hspace{4em}}年\uline{\hspace{2em}}月\uline{\hspace{2em}}日
+  }
+  \vbox{
+    \vskip8.5cm
+    \songti
+    \zihao{-4}
+    \noindent
+    作者签名：\uline{\hspace{12em}}
+    \hspace{\fill}
+    日期：\uline{\hspace{4em}}年\uline{\hspace{2em}}月\uline{\hspace{2em}}日\\
+    导师签名：\uline{\hspace{12em}}
+    \hspace{\fill}
+    日期：\uline{\hspace{4em}}年\uline{\hspace{2em}}月\uline{\hspace{2em}}日
+  }
 }
