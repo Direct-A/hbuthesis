@@ -1,43 +1,114 @@
-\documentclass[a4paper, 12pt, fontset=windows]{ctexbook}
+\documentclass[a4paper, 12pt, fontset=windows, draf]{ctexbook}
 \title{TITLE FOR TEST}
 \author{syc}
 \usepackage{layout}
 \usepackage[top=34mm, bottom=25mm, left=25mm, right=25mm, marginparwidth=20mm,]{geometry}
 \usepackage{fancyhdr,graphicx}
 \newCJKfontfamily\FZXBSong{FZXiaoBiaoSong-B05S}
+\newCJKfontfamily\TimesNR{Times New Roman}
 \begin{document}
 \def\makecover{
+  % ----- logo & title
   \linespread{1.5}
   ~\newline
   \raisebox{3pt}{\includegraphics[width=0.1\textwidth]{pic/hbu-logo.png}}~~~~~~\includegraphics[width=0.26\textwidth]{pic/hbu-title.png}
   \newline
-  \vspace{-15mm}
-  \songti
-  \zihao{-4}
+  % ----- 密级，分类号，学校代码和学号
   \begin{table}[h]
+    \songti
+    \zihao{-4}
     \begin{tabular}{cl}
-      \makebox[5em][s]{密\hspace{\fill}级：}\linebreak & 1\\
-      \makebox[5em][s]{分\hspace{\fill}类\hspace{\fill}号：}\linebreak & 1\\
-      \makebox[5em][s]{学\hspace{\fill}校\hspace{\fill}代\hspace{\fill}码：}\linebreak & 1\\
-      \makebox[5em][s]{学\hspace{\fill}号：}\linebreak & 1\\
+      \makebox[5em][s]{密\hspace{\fill}级：} & 1\\
+      \makebox[5em][s]{分\hspace{\fill}类\hspace{\fill}号：} & 1\\
+      \makebox[5em][s]{学\hspace{\fill}校\hspace{\fill}代\hspace{\fill}码：} & 1\\
+      \makebox[5em][s]{学\hspace{\fill}号：} & 1\\
     \end{tabular}
   \end{table}
   \newline
-  \heiti
-  \zihao{-0}
-  硕士学位论文
+  \vbox{
+    \vskip2cm
+    \noindent
+    \heiti
+    \zihao{-0}
+    硕士学位论文
+  }
   \newline
+  % ----- 论文题目
+  \vbox{
+    \vskip1.5cm
+    \noindent
+    \zihao{1}
+    \FZXBSong
+    \textbf{\@title}
+  }
+  \newline
+  \vspace{\fill}
+  \linespread{1.75}
   \begin{table}[h]
-    \begin{tabular}{p{17cm}}
-      \noindent
-      \zihao{1}
-      \FZXBSong
-      何首乌饮抑制生精细胞凋亡的何首乌饮抑制生精细胞凋亡的何首乌饮抑制生精细胞凋亡的
+    \heiti
+    \zihao{4}
+    \begin{tabular}{cl}
+      \makebox[6em][s]{学\hspace{\fill}位\hspace{\fill}申\hspace{\fill}请\hspace{\fill}人：} & 1\\
+      \makebox[6em][s]{指\hspace{\fill}导\hspace{\fill}教\hspace{\fill}师：} & 1\\
+      \makebox[6em][s]{学\hspace{\fill}位\hspace{\fill}类\hspace{\fill}别：} & 1\\
+      \makebox[6em][s]{学\hspace{\fill}科\hspace{\fill}专\hspace{\fill}业：} & 1\\
+      \makebox[6em][s]{院\hspace{\fill}系\hspace{\fill}名\hspace{\fill}称：} & 1\\
+      \makebox[6em][s]{答\hspace{\fill}辩\hspace{\fill}日\hspace{\fill}期：} & 1\\
     \end{tabular}
   \end{table}
+  \newpage
+  ~\newpage
+}
+\def\makeEncover{
+  \TimesNR
+  \zihao{-4}
+  \linespread{1.5}
+  \begin{table}[h]
+    \centering
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}rl}
+      \textbf{Classified  Index: 1} \hspace{\fill} %
+      & \textbf{CODE: 1} \hspace{\fill} \\
+      \textbf{U.D.C: 1} \hspace{\fill} %
+      & \textbf{NO: 1} \hspace{\fill} \\
+    \end{tabular*}
+  \end{table}
+  \vbox{
+    \vskip1.5cm
+    \centering
+    \TimesNR
+    \zihao{-0}
+    \textbf{Dissertation for the Degree of Master}
+  }
+  \vbox{
+    \vskip2.5cm
+    \centering
+    \zihao{1}
+    \textbf{title}
+  }
+  \vspace{\fill}
+  \begin{table}[h]
+    \linespread{1.75}
+    \zihao{4}
+    \centering
+      \begin{tabular}{rl}
+        Candidate: %
+        & 1 \\
+        Supervisor: %
+        & 1 \\
+        Academic Degree Applied for: %
+        & 1 \\
+        Specialty: %
+        & 1 \\
+        University: %
+        & 1 \\
+        Date of Oral Examination: %
+        & 1 \\
+      \end{tabular}
+  \end{table}
+  \newpage
 }
 \makecover
-\newpage
+\makeEncover
 \layout
 
 \end{document}
