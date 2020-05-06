@@ -9,14 +9,15 @@
 % Created: 2020-03-08 13:11
 % Last modified: 2020-05-03 00:29
 % ==============================================
+
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesPackage{HBUThesis}[2020/03/19 0.1 HeBei University Thesis Template for Master Candidate]
 
 % ----- KVoptions Packages -----
 \RequirePackage{kvoptions}
 \RequirePackage{etoolbox}
-\SetupKeyvalOptions{family=SDU, prefix=SDU@opt@, setkeys=\kvsetkeys}
-\newcommand{\ekv}[1]{\kvsetkeys{SDU}{#1}}
+\SetupKeyvalOptions{family=HBU, prefix=HBU@opt@, setkeys=\kvsetkeys}
+\newcommand{\ekv}[1]{\kvsetkeys{HBU}{#1}}
 
 % ----- Declare Options -----
 % ----- CHSstyle
@@ -34,7 +35,7 @@
 \LoadClass[a4paper, 12pt]{ctexbook}
 \ProcessKeyvalOptions*\relax
 
-\ifSDU@opt@double\relax\else
+\ifHBU@opt@double\relax\else
   \PassOptionsToClass{openany}{book}
 \fi
 
@@ -87,29 +88,34 @@
 \newtoks\supervisor                     %中文指导教师
 \newtoks\Esupervisor                    %英文指导教师
 \newtoks\collageName                    %中文学院名
-\newtoks\EuniverName                   %英文学院名
+\newtoks\EuniverName                    %英文学院名
 \newtoks\UDC                            %《国际十进制分类法UDC》的类号
 
 
-% ===============
-% set font family
-% ===============
+% ========
+% 字体设置
+% ========
+
 \newCJKfontfamily\FZXBSong{FZXiaoBiaoSong-B05S}
 \newCJKfontfamily\TimesNR{Times New Roman}
+
+
+% ========
+% 页面设置
+% ========
+
+\linespread{1.3}
+\addtolength{\parskip}{.3ex}
 
 
 % ================================
 % creat cover
 % use 'makecover' to creat a cover
 % ================================
-% TODO: 
-%   段落间距出现错误，考虑使用垂直模式
-%   
 
 % ----- 中文封面
 \def\makecover{
   % ----- logo & title
-  \linespread{1.5}
   ~\newline
   \raisebox{3pt}{\includegraphics[width=0.1\textwidth]{pic/hbu-logo.png}}~~~~~~\includegraphics[width=0.26\textwidth]{pic/hbu-title.png}
   \newline
@@ -118,10 +124,10 @@
     \songti
     \zihao{-4}
     \begin{tabular}{cl}
-      \makebox[5em][s]{密\hspace{\fill}级：} & \the\miji\\
-      \makebox[5em][s]{分\hspace{\fill}类\hspace{\fill}号：} & \the\fenlh\\
-      \makebox[5em][s]{学\hspace{\fill}校\hspace{\fill}代\hspace{\fill}码：} & \the\xxdaima\\
-      \makebox[5em][s]{学\hspace{\fill}号：} & \the\StuNum\\
+      \makebox[5em][s]{密\hspace{\fill}级:} & \the\miji\\
+      \makebox[5em][s]{分\hspace{\fill}类\hspace{\fill}号:} & \the\fenlh\\
+      \makebox[5em][s]{学\hspace{\fill}校\hspace{\fill}代\hspace{\fill}码:} & \the\xxdaima\\
+      \makebox[5em][s]{学\hspace{\fill}号:} & \the\StuNum\\
     \end{tabular}
   \end{table}
   \newline
@@ -139,6 +145,7 @@
     \noindent
     \zihao{1}
     \FZXBSong
+    \centering
     \textbf{\@title}
   }
   \newline
@@ -147,13 +154,14 @@
   \begin{table}[b]
     \heiti
     \zihao{4}
-    \begin{tabular}{cl}
-      \makebox[6em][s]{学\hspace{\fill}位\hspace{\fill}申\hspace{\fill}请\hspace{\fill}人：} & \@author\\
-      \makebox[6em][s]{指\hspace{\fill}导\hspace{\fill}教\hspace{\fill}师：} & \the\supervisor\\
-      \makebox[6em][s]{学\hspace{\fill}位\hspace{\fill}类\hspace{\fill}别：} & \the\major\\
-      \makebox[6em][s]{学\hspace{\fill}科\hspace{\fill}专\hspace{\fill}业：} & \the\speciality\\
-      \makebox[6em][s]{院\hspace{\fill}系\hspace{\fill}名\hspace{\fill}称：} & \the\collageName\\
-      \makebox[6em][s]{答\hspace{\fill}辩\hspace{\fill}日\hspace{\fill}期：} & \the\date\\
+    \centering
+    \begin{tabular}{rl}
+      \makebox[7em][s]{学\hspace{\fill}位\hspace{\fill}申\hspace{\fill}请\hspace{\fill}人:} & \@author\\
+      \makebox[7em][s]{指\hspace{\fill}导\hspace{\fill}教\hspace{\fill}师:} & \the\supervisor ~~教授\\
+      \makebox[7em][s]{学\hspace{\fill}位\hspace{\fill}类\hspace{\fill}别:} & \the\major\\
+      \makebox[7em][s]{学\hspace{\fill}科\hspace{\fill}专\hspace{\fill}业:} & \the\speciality\\
+      \makebox[7em][s]{院\hspace{\fill}系\hspace{\fill}名\hspace{\fill}称:} & \the\collageName\\
+      \makebox[7em][s]{答\hspace{\fill}辩\hspace{\fill}日\hspace{\fill}期:} & \the\date\\
     \end{tabular}
   \end{table}
   \newpage
@@ -165,7 +173,6 @@
 \def\makeEncover{
   \TimesNR
   \zihao{-4}
-  \linespread{1.5}
   \begin{table}[h]
     \centering
     \bf{
