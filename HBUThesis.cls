@@ -36,7 +36,7 @@
 \ProcessKeyvalOptions*\relax
 
 \ifHBU@opt@double\relax\else
-  \PassOptionsToClass{openany}{book}
+  \PassOptionsToClass{openany}{ctexbook}
 \fi
 
 % ================
@@ -49,17 +49,19 @@
   bottom=2.5cm,
   left=2.5cm,
   right=2.5cm,
-  xetex]{geometry}
+  xetex
+]{geometry}
 
 % ----- 图形 -----
 \RequirePackage{graphicx}
-% ----- 图片放在 pic 文件夹 -----
-\graphicspath{{pic/}}
+% ----- 图片存放文件夹 -----
+\graphicspath{{figures/}{figure/}{pictures/}{picture/}{pic/}{pics/}{image/}{images/}}
 
 % ----- 支持彩色 -----
 \RequirePackage{color,xcolor}
 
-\RequirePackage{fancyhdr,graphicx}
+% ----- 页眉页脚 -----
+\RequirePackage{fancyhdr}
 \RequirePackage{url}
 \RequirePackage{amssymb}
 
@@ -104,7 +106,17 @@
 % 页面设置
 % ========
 
-\linespread{1.3}
+\RequirePackage[
+  % ----- 设置正文行距倍数为1.5
+  bodytextleadingratio=2,
+  % ----- 设置为多倍行距
+  % restoremathleading=true,
+  % UseMSWordMultipleLineSpacing,
+  % MSWordLineSpacingMultiple=1.5
+  % ----- 设置脚注行距倍数为1.48
+  footnoteleadingratio=1.48,
+]{zhlineskip}
+\RestoreTextEnvironmentLeading{english}
 \addtolength{\parskip}{.3ex}
 
 
@@ -132,7 +144,7 @@
   \end{table}
   \newline
   \vbox{
-    \vskip2cm
+    \vskip1.5cm
     \noindent
     \heiti
     \zihao{-0}
@@ -150,7 +162,6 @@
   }
   \newline
   \vbox{\vfill}
-  \linespread{1.75}
   \begin{table}[b]
     \heiti
     \zihao{4}
@@ -199,7 +210,6 @@
   }
   \vspace{\fill}
   \begin{table}[h]
-    \linespread{1.75}
     \zihao{4}
     \centering
     \TimesNR
@@ -228,7 +238,6 @@
 % ----- 独创性声明 & 知识产权声明
 \def\orgState{
   % ----- 独创性声明
-  \linespread{1.75}
   \begin{center}
     \heiti
     \zihao{-2}
@@ -250,6 +259,7 @@
   \vbox{
     \vskip1.5cm
     \noindent
+    \zihao{4}
     \songti
     作者签名：\uline{\hspace{12em}}
     \hspace{\fill}
@@ -279,6 +289,7 @@
   \vbox{
     \vskip1.5cm
     \noindent
+    \zihao{4}
     \songti
     作者签名：\uline{\hspace{12em}}
     \hspace{\fill}
@@ -318,7 +329,7 @@
   \vbox{
     \vskip8.5cm
     \songti
-    \zihao{-4}
+    \zihao{4}
     \noindent
     作者签名：\uline{\hspace{12em}}
     \hspace{\fill}
