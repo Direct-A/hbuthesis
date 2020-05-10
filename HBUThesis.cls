@@ -7,7 +7,7 @@
 % Filename: HBUThesis.cls
 % Author: Song Yicheng - songyicheng0@gmail.com
 % Created: 2020-03-08 13:11
-% Last modified: 2020-05-03 00:29
+% Last modified: 2020-05-07 00:29
 % ==============================================
 
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
@@ -60,16 +60,25 @@
 % ----- 支持彩色 -----
 \RequirePackage{color,xcolor}
 
-% ----- 页眉页脚 -----
-\RequirePackage{fancyhdr}
 \RequirePackage{url}
+
+% ----- 数学支持 -----
+\RequirePackage{amsmath}
+\RequirePackage{amsfonts}
+\RequirePackage{amsthm}
 \RequirePackage{amssymb}
+\RequirePackage{amsbsy}
+\RequirePackage{bm}
+\RequirePackage{mathrsfs}
+
+% ----- 使用 uline -----
+\RequirePackage{ulem}
 
 % ----- KVoptions Packages -----
 \RequirePackage{kvoptions}
 \RequirePackage{etoolbox}
-\SetupKeyvalOptions{family=SDU, prefix=SDU@opt@, setkeys=\kvsetkeys}
-\renewcommand{\ekv}[1]{\kvsetkeys{SDU}{#1}}
+\SetupKeyvalOptions{family=HBU, prefix=HBU@opt@, setkeys=\kvsetkeys}
+\renewcommand{\ekv}[1]{\kvsetkeys{HBU}{#1}}
 
 % ============
 % creat tokens
@@ -98,6 +107,8 @@
 % 字体设置
 % ========
 
+\setmainfont{Times New Roman}
+% \setCJKmainfont{SimSun}
 \newCJKfontfamily\FZXBSong{FZXiaoBiaoSong-B05S}
 \newCJKfontfamily\TimesNR{Times New Roman}
 
@@ -120,10 +131,33 @@
 \addtolength{\parskip}{.3ex}
 
 
-% ================================
-% creat cover
-% use 'makecover' to creat a cover
-% ================================
+% ========
+% 页眉页脚
+% ========
+
+\RequirePackage{fancyhdr}
+
+% ----- 清除设置
+% \pagestyle{fancyplain}
+% \fancyhf{}
+
+% ----- 
+
+
+% ========
+% 新建命令
+% ========
+
+% ----- 表格内换行 -----
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+
+
+% =============================
+% 封面
+% \makecover
+% 知识产权保护声明 & 独创性声明
+% \orgState
+% =============================
 
 % ----- 中文封面
 \def\makecover{
@@ -175,7 +209,7 @@
       \makebox[7em][s]{答\hspace{\fill}辩\hspace{\fill}日\hspace{\fill}期:} & \the\date\\
     \end{tabular}
   \end{table}
-  \newpage
+  \clearpage
   % ----- 单双面判断
   % ~\newpage
 }
@@ -230,7 +264,8 @@
       \end{tabular}
     }
   \end{table}
-  \newpage
+  \songti
+  \clearpage
   % ----- 单双面判断
   % ~\newpage
 }
@@ -261,9 +296,9 @@
     \noindent
     \zihao{4}
     \songti
-    作者签名：\uline{\hspace{12em}}
+    作者签名：\underline{\hspace{12em}}
     \hspace{\fill}
-    日期：\uline{\hspace{4em}}年\uline{\hspace{2em}}月\uline{\hspace{2em}}日
+    日期：\underline{\hspace{4em}}年\underline{\hspace{2em}}月\underline{\hspace{2em}}日
   }
   \vbox{
     \vskip2cm
@@ -282,7 +317,7 @@
     学校可以公布论文的全部或部分内容，可以采用影印、缩印或其他复制手段保存论文。
     \par
     本学位论文属于\par
-    1、保密 $\square$ ，在\uline{\hspace{4em}}年\uline{\hspace{2em}}月\uline{\hspace{2em}}日解密后适用本授权声明。\par
+    1、保密 $\square$ ，在\underline{\hspace{4em}}年\underline{\hspace{2em}}月\underline{\hspace{2em}}日解密后适用本授权声明。\par
     2、不保密 $\square$ 。\par
     （ 请在以上相应方格内打“√” ）
   }
@@ -291,14 +326,14 @@
     \noindent
     \zihao{4}
     \songti
-    作者签名：\uline{\hspace{12em}}
+    作者签名：\underline{\hspace{12em}}
     \hspace{\fill}
-    日期：\uline{\hspace{4em}}年\uline{\hspace{2em}}月\uline{\hspace{2em}}日\\
-    导师签名：\uline{\hspace{12em}}
+    日期：\underline{\hspace{4em}}年\underline{\hspace{2em}}月\underline{\hspace{2em}}日\\
+    导师签名：\underline{\hspace{12em}}
     \hspace{\fill}
-    日期：\uline{\hspace{4em}}年\uline{\hspace{2em}}月\uline{\hspace{2em}}日
+    日期：\underline{\hspace{4em}}年\underline{\hspace{2em}}月\underline{\hspace{2em}}日
   }
-  \newpage
+  \clearpage
   % ----- 知识产权声明
   \begin{center}
     \heiti
@@ -322,20 +357,29 @@
     \newline
     \vskip1.5cm
     \noindent
-    声明人：\uline{\hspace{12em}}
+    声明人：\underline{\hspace{12em}}
     \hspace{\fill}
-    日期：\uline{\hspace{4em}}年\uline{\hspace{2em}}月\uline{\hspace{2em}}日
+    日期：\underline{\hspace{4em}}年\underline{\hspace{2em}}月\underline{\hspace{2em}}日
   }
   \vbox{
     \vskip8.5cm
     \songti
     \zihao{4}
     \noindent
-    作者签名：\uline{\hspace{12em}}
+    作者签名：\underline{\hspace{12em}}
     \hspace{\fill}
-    日期：\uline{\hspace{4em}}年\uline{\hspace{2em}}月\uline{\hspace{2em}}日\\
-    导师签名：\uline{\hspace{12em}}
+    日期：\underline{\hspace{4em}}年\underline{\hspace{2em}}月\underline{\hspace{2em}}日\\
+    导师签名：\underline{\hspace{12em}}
     \hspace{\fill}
-    日期：\uline{\hspace{4em}}年\uline{\hspace{2em}}月\uline{\hspace{2em}}日
+    日期：\underline{\hspace{4em}}年\underline{\hspace{2em}}月\underline{\hspace{2em}}日
   }
+  \clearpage
 }
+
+% ==========
+% 中英文摘要
+% ==========
+
+\newenvironment{abstract}{
+
+}{}
