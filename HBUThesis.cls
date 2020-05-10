@@ -296,9 +296,9 @@
     \noindent
     \zihao{4}
     \songti
-    作者签名：\underline{\hspace{12em}}
+    作者签名：\uline{\hspace{12em}}
     \hspace{\fill}
-    日期：\underline{\hspace{4em}}年\underline{\hspace{2em}}月\underline{\hspace{2em}}日
+    日期：\uline{\hspace{4em}}年\uline{\hspace{2em}}月\uline{\hspace{2em}}日
   }
   \vbox{
     \vskip2cm
@@ -317,7 +317,7 @@
     学校可以公布论文的全部或部分内容，可以采用影印、缩印或其他复制手段保存论文。
     \par
     本学位论文属于\par
-    1、保密 $\square$ ，在\underline{\hspace{4em}}年\underline{\hspace{2em}}月\underline{\hspace{2em}}日解密后适用本授权声明。\par
+    1、保密 $\square$ ，在\uline{\hspace{4em}}年\uline{\hspace{2em}}月\uline{\hspace{2em}}日解密后适用本授权声明。\par
     2、不保密 $\square$ 。\par
     （ 请在以上相应方格内打“√” ）
   }
@@ -326,12 +326,12 @@
     \noindent
     \zihao{4}
     \songti
-    作者签名：\underline{\hspace{12em}}
+    作者签名：\uline{\hspace{12em}}
     \hspace{\fill}
-    日期：\underline{\hspace{4em}}年\underline{\hspace{2em}}月\underline{\hspace{2em}}日\\
-    导师签名：\underline{\hspace{12em}}
+    日期：\uline{\hspace{4em}}年\uline{\hspace{2em}}月\uline{\hspace{2em}}日\\
+    导师签名：\uline{\hspace{12em}}
     \hspace{\fill}
-    日期：\underline{\hspace{4em}}年\underline{\hspace{2em}}月\underline{\hspace{2em}}日
+    日期：\uline{\hspace{4em}}年\uline{\hspace{2em}}月\uline{\hspace{2em}}日
   }
   \clearpage
   % ----- 知识产权声明
@@ -357,21 +357,21 @@
     \newline
     \vskip1.5cm
     \noindent
-    声明人：\underline{\hspace{12em}}
+    声明人：\uline{\hspace{12em}}
     \hspace{\fill}
-    日期：\underline{\hspace{4em}}年\underline{\hspace{2em}}月\underline{\hspace{2em}}日
+    日期：\uline{\hspace{4em}}年\uline{\hspace{2em}}月\uline{\hspace{2em}}日
   }
   \vbox{
     \vskip8.5cm
     \songti
     \zihao{4}
     \noindent
-    作者签名：\underline{\hspace{12em}}
+    作者签名：\uline{\hspace{12em}}
     \hspace{\fill}
-    日期：\underline{\hspace{4em}}年\underline{\hspace{2em}}月\underline{\hspace{2em}}日\\
-    导师签名：\underline{\hspace{12em}}
+    日期：\uline{\hspace{4em}}年\uline{\hspace{2em}}月\uline{\hspace{2em}}日\\
+    导师签名：\uline{\hspace{12em}}
     \hspace{\fill}
-    日期：\underline{\hspace{4em}}年\underline{\hspace{2em}}月\underline{\hspace{2em}}日
+    日期：\uline{\hspace{4em}}年\uline{\hspace{2em}}月\uline{\hspace{2em}}日
   }
   \clearpage
 }
