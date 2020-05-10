@@ -45,10 +45,14 @@
 
 % ----- pages setting -----
 \RequirePackage[
-  top=3.4cm,
-  bottom=2.5cm,
-  left=2.5cm,
-  right=2.5cm,
+  % includeheadfoot,
+  top=34mm,
+  bottom=25mm,
+  left=25mm,
+  right=25mm,
+  head=6mm,
+  headsep=3mm,
+  footskip=3mm,
   xetex
 ]{geometry}
 
@@ -108,8 +112,8 @@
 % 字体设置
 % ========
 
-\setmainfont[Path=fonts/]{Times New Roman}
-% \setCJKmainfont[Path=fonts/]{SimSun}
+\setmainfont{Times New Roman}
+\setCJKmainfont{SimSun}
 \newCJKfontfamily\FZXBSong{FZXiaoBiaoSong-B05S}
 \newCJKfontfamily\TimesNR{Times New Roman}
 
@@ -162,7 +166,6 @@
 
 % ----- 中文封面
 \def\makecover{
-  \null
   % ----- logo & title
   ~\newline
   \raisebox{3pt}{\includegraphics[width=0.1\textwidth]{pic/hbu-logo.png}}~~~~~~\includegraphics[width=0.26\textwidth]{pic/hbu-title.png}
