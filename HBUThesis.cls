@@ -108,8 +108,8 @@
 % 字体设置
 % ========
 
-\setmainfont{Times New Roman}
-% \setCJKmainfont{SimSun}
+\setmainfont[Path=fonts/]{Times New Roman}
+% \setCJKmainfont[Path=fonts/]{SimSun}
 \newCJKfontfamily\FZXBSong{FZXiaoBiaoSong-B05S}
 \newCJKfontfamily\TimesNR{Times New Roman}
 
@@ -162,6 +162,7 @@
 
 % ----- 中文封面
 \def\makecover{
+  \null
   % ----- logo & title
   ~\newline
   \raisebox{3pt}{\includegraphics[width=0.1\textwidth]{pic/hbu-logo.png}}~~~~~~\includegraphics[width=0.26\textwidth]{pic/hbu-title.png}
