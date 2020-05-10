@@ -30,10 +30,10 @@ jobs:
     - name: Test thesis
       run: |
         export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
-        make main
+        latexmk -xelatex -synctex=1 -shell-escape -interaction=nonstopmode -file-line-error MasterTemplate.tex
 
     # Runs a set of commands using the runners shell
-    - name: Test doc
-      run: |
-        export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
-        make doc
+    #- name: Test doc
+    #  run: |
+    #    export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
+    #    make doc
