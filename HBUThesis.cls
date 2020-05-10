@@ -53,23 +53,24 @@
 ]{geometry}
 
 % ----- 图形 -----
-\RequirePackage{graphicx}
+% \RequirePackage{graphicx}
 % ----- 图片存放文件夹 -----
-\graphicspath{{figures/}{figure/}{pictures/}{picture/}{pic/}{pics/}{image/}{images/}}
+% \graphicspath{{figures/}{figure/}{pictures/}{picture/}{pic/}{pics/}{image/}{images/}}
 
 % ----- 支持彩色 -----
-\RequirePackage{color,xcolor}
+\RequirePackage{xcolor}
+% \RequirePackage{color}
 
 \RequirePackage{url}
 
 % ----- 数学支持 -----
 \RequirePackage{amsmath}
 \RequirePackage{amsfonts}
-\RequirePackage{amsthm}
-\RequirePackage{amssymb}
-\RequirePackage{amsbsy}
-\RequirePackage{bm}
-\RequirePackage{mathrsfs}
+% \RequirePackage{amsthm}
+% \RequirePackage{amssymb}
+% \RequirePackage{amsbsy}
+% \RequirePackage{bm}
+% \RequirePackage{mathrsfs}
 
 % ----- 使用 uline -----
 \RequirePackage{ulem}
