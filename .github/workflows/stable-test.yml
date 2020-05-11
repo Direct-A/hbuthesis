@@ -40,27 +40,9 @@ jobs:
     #    make doc
 
     # use action with full Texlive installed
-    - name: Github Action for LaTeX
-      uses: xu-cheng/texlive-action/small@v1
+    - name: compile test
+      uses: xu-cheng/texlive-action/full@v1
       with:
         run: |
           tlmgr version
-          echo ###XETEX_PKGS###
-          tlmgr install fontname fontspec l3packages xetex
-          echo ###CTEX_PKGS###
-          tlmgr install cjk ctex environ ms trimspaces ulem xecjk zhnumber
-          echo ###HYPERREF_PKGS###
-          tlmgr install bitset letltxmacro pdfescape pdflscape
-          echo ###NOMENCL_PKGS###
-          tlmgr install nomencl koma-script xkeyval
-
-          echo ###BIN_PKGS###
-          tlmgr install latexmk l3build
-          echo ###REQUIRED_PKGS###
-          tlmgr install amsmath amsfontss
-          echo ###EXTRA_PKGS###
-          tlmgr install siunitx zhlineskip
-          echo ###DOC_PKGS###
-          tlmgr install booktabs listings xcolor
-
           latexmk -xelatex -synctex=1 -shell-escape -interaction=nonstopmode -file-line-error MasterTemplate.tex
