@@ -44,6 +44,7 @@ jobs:
       uses: xu-cheng/texlive-action/small@v1
       with:
         run: |
+          tlmgr version
           echo ###XETEX_PKGS###
           tlmgr install fontname fontspec l3packages xetex
           echo ###CTEX_PKGS###
@@ -52,7 +53,7 @@ jobs:
           tlmgr install bitset letltxmacro pdfescape pdflscape
           echo ###NOMENCL_PKGS###
           tlmgr install nomencl koma-script xkeyval
-          
+
           echo ###BIN_PKGS###
           tlmgr install latexmk l3build
           echo ###REQUIRED_PKGS###
@@ -62,6 +63,4 @@ jobs:
           echo ###DOC_PKGS###
           tlmgr install booktabs listings xcolor
 
-    - name: Test thesis
-      run: |
-        latexmk -xelatex -synctex=1 -shell-escape -interaction=nonstopmode -file-line-error MasterTemplate.tex
+          latexmk -xelatex -synctex=1 -shell-escape -interaction=nonstopmode -file-line-error MasterTemplate.tex
