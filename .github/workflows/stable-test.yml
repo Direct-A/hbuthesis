@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: build test
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -22,18 +22,46 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v1
-    - name: Install TeX Live
-      run: bash .github/workflows/install-tl.sh
+    - name: Set up Git repository
+      uses: actions/checkout@v2
+    # - name: Install TeX Live
+    #   run: bash .github/workflows/install-tl.sh
 
     # Runs a single command using the runners shell
-    - name: Test thesis
-      run: |
-        export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
-        latexmk -xelatex -synctex=1 -shell-escape -interaction=nonstopmode -file-line-error MasterTemplate.tex
+    # - name: Test thesis
+    #   run: |
+    #     export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
+    #     latexmk -xelatex -synctex=1 -shell-escape -interaction=nonstopmode -file-line-error MasterTemplate.tex
 
     # Runs a set of commands using the runners shell
     #- name: Test doc
     #  run: |
     #    export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
     #    make doc
+
+    # use action with full Texlive installed
+    - name: Github Action for LaTeX
+      uses: xu-cheng/texlive-action/small@v1
+      with:
+        run: |
+        # XETEX_PKGS
+          tlmgr install fontname fontspec l3packages xetex
+        # CTEX_PKGS
+          tlmgr install cjk ctex environ ms trimspaces ulem xecjk zhnumber
+        # HYPERREF_PKGS
+          tlmgr install bitset letltxmacro pdfescape pdflscape
+        # NOMENCL_PKGS
+          tlmgr install nomencl koma-script xkeyval
+          
+        # BIN_PKGS
+          tlmgr install latexmk l3build
+        # REQUIRED_PKGS
+          tlmgr install amsmath amsfonts
+        # EXTRA_PKGS
+          tlmgr install siunitx zhlineskip
+        # DOC_PKGS
+          tlmgr install booktabs listings xcolor
+
+    - name: Test thesis
+      run: |
+        latexmk -xelatex -synctex=1 -shell-escape -interaction=nonstopmode -file-line-error MasterTemplate.tex
