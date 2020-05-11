@@ -32,7 +32,7 @@
 % ----- Default Options
 \DeclareDefaultOption{\PassOptionsToPackage{\CurrentOption}{ctexbook}}
 % A4纸张大小，书记格式
-\LoadClass[a4paper, 12pt]{ctexbook}
+\LoadClass[a4paper, 12pt, fontset=windows]{ctexbook}
 \ProcessKeyvalOptions*\relax
 
 \ifHBU@opt@double\relax\else
@@ -112,10 +112,30 @@
 % 字体设置
 % ========
 
-\setmainfont{Times New Roman}
-\setCJKmainfont{SimSun}
-\newCJKfontfamily\FZXBSong{FZXiaoBiaoSong-B05S}
-\newCJKfontfamily\TimesNR{Times New Roman}
+\setmainfont{times}[
+  Path=fonts/,
+  Extension=.ttf,
+  BoldFont=timesbd
+  ]
+\setCJKmainfont{simsun}[
+  Path=fonts/,
+  Extension=.ttc,
+  AutoFakeBold=true,
+  AutoFakeSlant=true
+  ]
+\setCJKsansfont{simhei}[
+  Path=fonts/,
+  Extension=.ttc
+]
+\newCJKfontfamily\FZXBSong{FZXBSJW}[
+  Path=fonts/,
+  Extension=.ttf
+  ]
+\newCJKfontfamily\simhei{simhei}[
+  Path=fonts/,
+  Extension=.ttf
+  ]
+% \newCJKfontfamily\TimesNR{Times New Roman}
 
 
 % ========
@@ -221,7 +241,7 @@
 
 % ----- 英文封面
 \def\makeEncover{
-  \TimesNR
+  % \TimesNR
   \zihao{-4}
   \begin{table}[h]
     \centering
@@ -237,7 +257,7 @@
   \vbox{
     \vskip1.5cm
     \centering
-    \TimesNR
+    % \TimesNR
     \zihao{-0}
     \textbf{Dissertation for the Degree of Master}
   }
@@ -251,7 +271,7 @@
   \begin{table}[h]
     \zihao{4}
     \centering
-    \TimesNR
+    % \TimesNR
     \bf{
       \begin{tabular}{rl}
         Candidate: %
