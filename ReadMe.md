@@ -1,10 +1,12 @@
-# 河北大学硕士研究生毕业论文 LaTeX 模板
+# 河北大学硕士研究生学位论文 LaTeX 模板
 
 <!-- [![GitHub release](https://img.shields.io/github/release/ustctug/ustcthesis/all.svg)](https://github.com/ustctug/ustcthesis/releases/latest) -->
 <!-- [![GitHub commits](https://img.shields.io/github/commits-since/ustctug/ustcthesis/latest.svg)](https://github.com/ustctug/ustcthesis/commits/master) -->
 [![CI](https://github.com/Direct-A/hbuthesis/workflows/CI/badge.svg?branch=master)](https://github.com/Direct-A/hbuthesis/actions)
 
-a LaTeX template for master degree in hebei university
+本项目是河北大学的研究生学位论文 LaTeX 模板 hbuthesis，按照最新版的
+《[研究生学位论文撰写手册](http://xwb.hbu.edu.cn/u/cms/www/201905/31184516lppw.pdf)》
+的要求编写，目前兼容最新版的 TeX Live 发行版，预期支持跨平台使用。
 
 # **未完工，仍在制作中，敬请期待。。。**
 
@@ -14,7 +16,6 @@ a LaTeX template for master degree in hebei university
 - [x] 知识产权页
 - [x] 独创性声明页
 - [ ] 中文摘要
-- [ ] 参考文献
 - [ ] 目录
 - [ ] 缩略语
 - [ ] 页眉页脚
@@ -23,11 +24,7 @@ a LaTeX template for master degree in hebei university
 - [ ] 致谢和学术成果
 - [ ] 参考文献
 
-<!-- 本项目是中国科学技术大学的学位论文 LaTeX 模板 ustcthesis，按照最新版的
-《[研究生学位论文撰写手册](http://gradschool.ustc.edu.cn/ylb/material/xw/wdxz/32.pdf)》
-和
-《[关于本科毕业论文（设计）格式和统一封面的通知](https://www.teach.ustc.edu.cn/notice/notice-teaching/11530.html)》
-的要求编写，兼容最新版的 TeX Live、MacTeX 、MiKTeX 发行版，支持跨平台使用。
+<!-- 
 
 注意：
 
