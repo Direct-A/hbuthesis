@@ -44,22 +44,22 @@ jobs:
       uses: xu-cheng/texlive-action/small@v1
       with:
         run: |
-        # XETEX_PKGS
+          echo ###XETEX_PKGS###
           tlmgr install fontname fontspec l3packages xetex
-        # CTEX_PKGS
+          echo ###CTEX_PKGS###
           tlmgr install cjk ctex environ ms trimspaces ulem xecjk zhnumber
-        # HYPERREF_PKGS
+          echo ###HYPERREF_PKGS###
           tlmgr install bitset letltxmacro pdfescape pdflscape
-        # NOMENCL_PKGS
+          echo ###NOMENCL_PKGS###
           tlmgr install nomencl koma-script xkeyval
           
-        # BIN_PKGS
+          echo ###BIN_PKGS###
           tlmgr install latexmk l3build
-        # REQUIRED_PKGS
-          tlmgr install amsmath amsfonts
-        # EXTRA_PKGS
+          echo ###REQUIRED_PKGS###
+          tlmgr install amsmath amsfontss
+          echo ###EXTRA_PKGS###
           tlmgr install siunitx zhlineskip
-        # DOC_PKGS
+          echo ###DOC_PKGS###
           tlmgr install booktabs listings xcolor
 
     - name: Test thesis
