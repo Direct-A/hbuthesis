@@ -1,7 +1,7 @@
 # 河北大学硕士研究生学位论文 LaTeX 模板
 
 <!-- [![GitHub release](https://img.shields.io/github/release/ustctug/ustcthesis/all.svg)](https://github.com/ustctug/ustcthesis/releases/latest) -->
-<!-- [![GitHub commits](https://img.shields.io/github/commits-since/ustctug/ustcthesis/latest.svg)](https://github.com/ustctug/ustcthesis/commits/master) -->
+<!-- [![GitHub commits](https://img.shields.io/github/commits-since/Direct-A/hbuthesis/latest.svg)](https://github.com/Direct-A/hbuthesis/commits/master) -->
 [![CI](https://github.com/Direct-A/hbuthesis/workflows/CI/badge.svg?branch=master)](https://github.com/Direct-A/hbuthesis/actions)
 
 本项目是河北大学的研究生学位论文 LaTeX 模板 hbuthesis，按照最新版的

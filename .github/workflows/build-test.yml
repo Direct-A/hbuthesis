@@ -14,7 +14,7 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   #build:
-  test:
+  testOnLinux:
     
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -38,6 +38,44 @@ jobs:
     #  run: |
     #    export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
     #    make doc
+
+    # use action with full Texlive installed
+    - name: compile test
+      uses: xu-cheng/texlive-action/full@v1
+      with:
+        run: |
+          tlmgr version
+          latexmk -xelatex -synctex=1 -shell-escape -interaction=nonstopmode -file-line-error MasterTemplate.tex
+
+  testOnWindows:
+    
+    # The type of runner that the job will run on
+    runs-on: windows-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - name: Set up Git repository
+      uses: actions/checkout@v2
+
+    # use action with full Texlive installed
+    - name: compile test
+      uses: xu-cheng/texlive-action/full@v1
+      with:
+        run: |
+          tlmgr version
+          latexmk -xelatex -synctex=1 -shell-escape -interaction=nonstopmode -file-line-error MasterTemplate.tex
+
+  testOnMacos:
+    
+    # The type of runner that the job will run on
+    runs-on: macos-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - name: Set up Git repository
+      uses: actions/checkout@v2
 
     # use action with full Texlive installed
     - name: compile test
