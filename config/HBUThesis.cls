@@ -7,15 +7,19 @@
 % Filename: HBUThesis.cls
 % Author: Song Yicheng - songyicheng0@gmail.com
 % Created: 2020-03-08 13:11
-% Last modified: 2020-05-07 00:29
+% Last modified: 2021-05-28 00:29
 % ==============================================
+% [ ] 封面标题和图片缩进
+% [ ] 行距设置
+% [ ] 字体设置
 
-\NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesPackage{HBUThesis}[2020/03/19 0.1 HeBei University Thesis Template for Master Candidate]
+
+\NeedsTeXFormat{LaTeX2e}[2020/10/01]
+\ProvidesClass{HBUThesis}[2020/03/19 0.1 HeBei University Thesis Template for Master Candidate]
+\typeout{Document Class `HBUThesis' 0.1.0 by Yicheng Song (2021/05/28).}
 
 % ----- KVoptions Packages -----
 \RequirePackage{kvoptions}
-\RequirePackage{etoolbox}
 \SetupKeyvalOptions{family=HBU, prefix=HBU@opt@, setkeys=\kvsetkeys}
 \newcommand{\ekv}[1]{\kvsetkeys{HBU}{#1}}
 
@@ -32,16 +36,28 @@
 % ----- Default Options
 \DeclareDefaultOption{\PassOptionsToPackage{\CurrentOption}{ctexbook}}
 % A4纸张大小，书记格式
-\LoadClass[a4paper, 12pt, fontset=windows]{ctexbook}
-\ProcessKeyvalOptions*\relax
+\LoadClass[%
+  a4paper, 12pt, UTF8, twoside,%
+  openright,%
+  fontset=none,%
+  heading=true]{ctexbook}
+\ProcessKeyvalOptions* \relax
 
-\ifHBU@opt@double\relax\else
-  \PassOptionsToClass{openany}{ctexbook}
+% 单双面设置
+\ifHBU@opt@double
+  \relax
+\else
+  \PassOptionsToClass{oneside}{ctexbook}
 \fi
+
 
 % ================
 % packages setting
 % ================
+
+\RequirePackage{etoolbox}
+\RequirePackage{xeCJK}
+\RequirePackage{indentfirst}
 
 % ----- pages setting -----
 \RequirePackage[
@@ -54,7 +70,7 @@
   headsep=3mm,
   footskip=3mm,
   xetex
-]{geometry}
+  ]{geometry}
 
 % ----- 图形 -----
 % \RequirePackage{graphicx}
@@ -76,14 +92,9 @@
 % \RequirePackage{bm}
 % \RequirePackage{mathrsfs}
 
-% ----- 使用 uline -----
+% ----- 下划线 -----
 \RequirePackage{ulem}
 
-% ----- KVoptions Packages -----
-\RequirePackage{kvoptions}
-\RequirePackage{etoolbox}
-\SetupKeyvalOptions{family=HBU, prefix=HBU@opt@, setkeys=\kvsetkeys}
-\renewcommand{\ekv}[1]{\kvsetkeys{HBU}{#1}}
 
 % ============
 % creat tokens
@@ -111,31 +122,60 @@
 % ========
 % 字体设置
 % ========
+% \songti
+% \CJKfamily{zhsong}
+% \heiti
+% \CJKfamily{zhhei}
+% \fangsong
+% \CJKfamily{zhfs}
+% \kaishu
+% \CJKfamily{zhkai}
+
+% \lishu
+% \CJKfamily{zhli}
+% \youyuan
+% \CJKfamily{zhyou}
+
+% \yahei
+% \CJKfamily{zhyahei}
 
 \setmainfont{times}[
-  Path=fonts/,
+  Path=./config/fonts/,
   Extension=.ttf,
-  BoldFont=timesbd
-  ]
+  BoldFont=timesbd.ttf,
+  ItalicFont=timesi.ttf,
+  BoldItalicFont=timesbi.ttf
+]
 \setCJKmainfont{simsun}[
-  Path=fonts/,
-  Extension=.ttc,
+  Path=./config/fonts/,
+  Extension=.ttf,
   AutoFakeBold=true,
   AutoFakeSlant=true
   ]
 \setCJKsansfont{simhei}[
-  Path=fonts/,
-  Extension=.ttc
+  Path=./config/fonts/,
+  Extension=.ttf,
+  AutoFakeBold=true,
+  AutoFakeSlant=true
 ]
-\newCJKfontfamily\FZXBSong{FZXBSJW}[
-  Path=fonts/,
-  Extension=.ttf
-  ]
-\newCJKfontfamily\simhei{simhei}[
-  Path=fonts/,
-  Extension=.ttf
-  ]
-% \newCJKfontfamily\TimesNR{Times New Roman}
+\newCJKfontfamily\songti{simsun}[
+  Path=./config/fonts/,
+  Extension=.ttf,
+  BoldFont=simsunb.ttf,
+  AutoFakeSlant=true
+]
+\newCJKfontfamily\xbsong{fzxbsong}[
+  Path=./config/fonts/,
+  Extension=.ttf,
+  AutoFakeBold=true,
+  AutoFakeSlant=true
+]
+\newCJKfontfamily\heiti{simhei}[
+  Path=./config/fonts/,
+  Extension=.ttf,
+  AutoFakeBold=true,
+  AutoFakeSlant=true
+]
 
 
 % ========
@@ -146,9 +186,9 @@
   % ----- 设置正文行距倍数为1.5
   bodytextleadingratio=2,
   % ----- 设置为多倍行距
-  % restoremathleading=true,
-  % UseMSWordMultipleLineSpacing,
-  % MSWordLineSpacingMultiple=1.5
+  restoremathleading=true,
+  UseMSWordMultipleLineSpacing,
+  MSWordLineSpacingMultiple=1.5
   % ----- 设置脚注行距倍数为1.48
   footnoteleadingratio=1.48,
 ]{zhlineskip}
@@ -180,68 +220,86 @@
 % =============================
 % 封面
 % \makecover
+% \makeEncover
 % 知识产权保护声明 & 独创性声明
 % \orgState
 % =============================
 
 % ----- 中文封面
 \def\makecover{
+  \newgeometry{
+    top=32mm,
+    bottom=32mm,
+    left=26mm,
+    right=26mm,
+  }
+  \setlength{\parindent}{2em}
   % ----- logo & title
   ~\newline
   \raisebox{3pt}{\includegraphics[width=0.1\textwidth]{pic/hbu-logo.png}}~~~~~~\includegraphics[width=0.26\textwidth]{pic/hbu-title.png}
   \newline
   % ----- 密级，分类号，学校代码和学号
   \begin{table}[h]
-    \songti
-    \zihao{-4}
-    \begin{tabular}{cl}
-      \makebox[5em][s]{密\hspace{\fill}级:} & \the\miji\\
-      \makebox[5em][s]{分\hspace{\fill}类\hspace{\fill}号:} & \the\fenlh\\
-      \makebox[5em][s]{学\hspace{\fill}校\hspace{\fill}代\hspace{\fill}码:} & \the\xxdaima\\
-      \makebox[5em][s]{学\hspace{\fill}号:} & \the\StuNum\\
-    \end{tabular}
+    \songti{
+      \zihao{-4}
+      \begin{tabular}{cl}
+        \makebox[5em][s]{密\hspace{\fill}级:} & \the\miji\\
+        \makebox[5em][s]{分\hspace{\fill}类\hspace{\fill}号:} & \the\fenlh\\
+        \makebox[5em][s]{学\hspace{\fill}校\hspace{\fill}代\hspace{\fill}码:} & \the\xxdaima\\
+        \makebox[5em][s]{学\hspace{\fill}号:} & \the\StuNum\\
+      \end{tabular}
+    }
   \end{table}
   \newline
+  % ----- 硕博论文
   \vbox{
     \vskip1.5cm
     \noindent
-    \heiti
-    \zihao{-0}
-    硕士学位论文
+    \heiti{
+      \zihao{-0}
+      硕士学位论文
+    }
   }
   \newline
   % ----- 论文题目
   \vbox{
     \vskip1.5cm
     \noindent
-    \zihao{1}
-    \FZXBSong
-    \centering
-    \textbf{\@title}
+    \xbsong{
+      \zihao{1}
+      \@title
+    }
   }
   \newline
+  % ----- 论文信息
   \vbox{\vfill}
   \begin{table}[b]
-    \heiti
-    \zihao{4}
-    \centering
-    \begin{tabular}{rl}
-      \makebox[7em][s]{学\hspace{\fill}位\hspace{\fill}申\hspace{\fill}请\hspace{\fill}人:} & \@author\\
-      \makebox[7em][s]{指\hspace{\fill}导\hspace{\fill}教\hspace{\fill}师:} & \the\supervisor ~~教授\\
-      \makebox[7em][s]{学\hspace{\fill}位\hspace{\fill}类\hspace{\fill}别:} & \the\major\\
-      \makebox[7em][s]{学\hspace{\fill}科\hspace{\fill}专\hspace{\fill}业:} & \the\speciality\\
-      \makebox[7em][s]{院\hspace{\fill}系\hspace{\fill}名\hspace{\fill}称:} & \the\collageName\\
-      \makebox[7em][s]{答\hspace{\fill}辩\hspace{\fill}日\hspace{\fill}期:} & \the\date\\
-    \end{tabular}
+    \heiti{
+      \zihao{4}
+      \centering
+      \begin{tabular}{rl}
+        \makebox[7em][s]{学\hspace{\fill}位\hspace{\fill}申\hspace{\fill}请\hspace{\fill}人:} & \@author\\
+        \makebox[7em][s]{指\hspace{\fill}导\hspace{\fill}教\hspace{\fill}师:} & \the\supervisor ~~教授\\
+        \makebox[7em][s]{学\hspace{\fill}位\hspace{\fill}类\hspace{\fill}别:} & \the\major\\
+        \makebox[7em][s]{学\hspace{\fill}科\hspace{\fill}专\hspace{\fill}业:} & \the\speciality\\
+        \makebox[7em][s]{院\hspace{\fill}系\hspace{\fill}名\hspace{\fill}称:} & \the\collageName\\
+        \makebox[7em][s]{答\hspace{\fill}辩\hspace{\fill}日\hspace{\fill}期:} & \the\date\\
+      \end{tabular}
+    }
   \end{table}
   \clearpage
-  % ----- 单双面判断
-  % ~\newpage
+  ~\newpage
+  \restoregeometry
 }
 
 % ----- 英文封面
 \def\makeEncover{
-  % \TimesNR
+  \newgeometry{
+    top=32mm,
+    bottom=32mm,
+    left=26mm,
+    right=26mm,
+  }
   \zihao{-4}
   \begin{table}[h]
     \centering
@@ -291,8 +349,8 @@
   \end{table}
   \songti
   \clearpage
-  % ----- 单双面判断
-  % ~\newpage
+  ~\newpage
+  \restoregeometry
 }
 
 % ----- 独创性声明 & 知识产权声明
@@ -359,6 +417,7 @@
     日期：\uline{\hspace{4em}}年\uline{\hspace{2em}}月\uline{\hspace{2em}}日
   }
   \clearpage
+
   % ----- 知识产权声明
   \begin{center}
     \heiti
@@ -399,7 +458,9 @@
     日期：\uline{\hspace{4em}}年\uline{\hspace{2em}}月\uline{\hspace{2em}}日
   }
   \clearpage
+  \
 }
+
 
 % ==========
 % 中英文摘要
