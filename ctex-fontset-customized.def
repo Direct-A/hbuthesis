@@ -1,0 +1,29 @@
+\ProvidesExplFile{ctex-fontset-customized.def}
+  {\ExplFileDate}{2.5.6}{\ExplFileDescription}
+
+\setCJKfamilyfont { zhsong } {simsun.ttf}[
+  Path=./fonts/,
+  AutoFakeBold=true,
+  AutoFakeSlant=true
+]
+\setCJKfamilyfont { zhhei  } {simhei.ttf}[
+  Path=./fonts/,
+  AutoFakeBold=true,
+]
+\setCJKfamilyfont { zhkai  } {simkai.ttf}[
+  Path=./fonts/,
+  AutoFakeBold=true,
+]
+\setCJKfamilyfont { zhfs   } {simfang.ttf}[
+  Path=./fonts/,
+  AutoFakeBold=true,
+]
+\setCJKfamilyfont { FZXBS  } {FZXBSJW.ttf}[
+  Path=./fonts/,
+]
+
+\NewDocumentCommand \songti   { } { \CJKfamily { zhsong  } }
+\NewDocumentCommand \heiti    { } { \CJKfamily { zhhei   } }
+\NewDocumentCommand \kaishu   { } { \CJKfamily { zhkai   } }
+\NewDocumentCommand \fangsong { } { \CJKfamily { zhfs    } }
+\NewDocumentCommand \FZXBSong { } { \CJKfamily { FZXBS   } }

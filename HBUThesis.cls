@@ -13,12 +13,12 @@
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesPackage{HBUThesis}[2020/03/19 0.1 HeBei University Thesis Template for Master Candidate]
 
+% ----- 编程工具箱 -----
+\RequirePackage{etoolbox}
 % ----- KVoptions Packages -----
 \RequirePackage{kvoptions}
-\RequirePackage{etoolbox}
 \SetupKeyvalOptions{family=HBU, prefix=HBU@opt@, setkeys=\kvsetkeys}
 \newcommand{\ekv}[1]{\kvsetkeys{HBU}{#1}}
-
 % ----- Declare Options -----
 % ----- CHSstyle
 \DeclareBoolOption[true]{chsstyle}
@@ -31,12 +31,22 @@
 \DeclareComplementaryOption{single}{double}
 % ----- Default Options
 \DeclareDefaultOption{\PassOptionsToPackage{\CurrentOption}{ctexbook}}
+
 % A4纸张大小，书记格式
-\LoadClass[a4paper, 12pt, fontset=windows]{ctexbook}
+\LoadClass[
+  a4paper,
+  % 12pt,
+  zihao=-4,
+  fontset=customized,
+  % fontset=windows
+]{ctexbook}
 \ProcessKeyvalOptions*\relax
 
-\ifHBU@opt@double\relax\else
-  \PassOptionsToClass{openany}{ctexbook}
+% 正反打印设置
+\ifHBU@opt@double
+  \relax% 双面出现空白页
+\else
+  \PassOptionsToClass{openany}{ctexbook}% 单面和电子版没有
 \fi
 
 % ================
@@ -56,22 +66,33 @@
   xetex
 ]{geometry}
 
+% ----- 实现两端对齐
+\RequirePackage{ragged2e}
+
+% ----- 页眉页脚 -----
+\RequirePackage{fancyhdr}
+
+% ----- 清除设置
+% \pagestyle{fancyplain}
+% \fancyhf{}
+
 % ----- 图形 -----
-% \RequirePackage{graphicx}
+\RequirePackage{graphicx}
 % ----- 图片存放文件夹 -----
-% \graphicspath{{figures/}{figure/}{pictures/}{picture/}{pic/}{pics/}{image/}{images/}}
+\graphicspath{{figures/}{figure/}{pictures/}{picture/}{pic/}{pics/}{image/}{images/}}
 
 % ----- 支持彩色 -----
 \RequirePackage{xcolor}
 % \RequirePackage{color}
+\RequirePackage{colortbl}
 
 \RequirePackage{url}
 
 % ----- 数学支持 -----
 \RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{amsthm}
 \RequirePackage{amsfonts}
-% \RequirePackage{amsthm}
-% \RequirePackage{amssymb}
 % \RequirePackage{amsbsy}
 % \RequirePackage{bm}
 % \RequirePackage{mathrsfs}
@@ -79,11 +100,14 @@
 % ----- 使用 uline -----
 \RequirePackage{ulem}
 
-% ----- KVoptions Packages -----
-\RequirePackage{kvoptions}
-\RequirePackage{etoolbox}
-\SetupKeyvalOptions{family=HBU, prefix=HBU@opt@, setkeys=\kvsetkeys}
-\renewcommand{\ekv}[1]{\kvsetkeys{HBU}{#1}}
+% ----- 日期自动化 -----
+\RequirePackage{datetime}
+\RequirePackage{nth}
+
+% ----- 目录 -----
+\RequirePackage[notlof,notlot,nottoc,numbib]{tocbibind} %table of content
+\RequirePackage{tocloft}
+
 
 % ============
 % creat tokens
@@ -112,30 +136,9 @@
 % 字体设置
 % ========
 
-\setmainfont{times}[
-  Path=fonts/,
-  Extension=.ttf,
-  BoldFont=timesbd
-  ]
-\setCJKmainfont{simsun}[
-  Path=fonts/,
-  Extension=.ttc,
-  AutoFakeBold=true,
-  AutoFakeSlant=true
-  ]
-\setCJKsansfont{simhei}[
-  Path=fonts/,
-  Extension=.ttc
-]
-\newCJKfontfamily\FZXBSong{FZXBSJW}[
-  Path=fonts/,
-  Extension=.ttf
-  ]
-\newCJKfontfamily\simhei{simhei}[
-  Path=fonts/,
-  Extension=.ttf
-  ]
-% \newCJKfontfamily\TimesNR{Times New Roman}
+% 配置英文字体
+\RequirePackage{fontspec}
+\setmainfont{Times New Roman}
 
 
 % ========
@@ -157,19 +160,6 @@
 
 
 % ========
-% 页眉页脚
-% ========
-
-\RequirePackage{fancyhdr}
-
-% ----- 清除设置
-% \pagestyle{fancyplain}
-% \fancyhf{}
-
-% ----- 
-
-
-% ========
 % 新建命令
 % ========
 
@@ -185,7 +175,7 @@
 % =============================
 
 % ----- 中文封面
-\def\makecover{
+\newcommand\makecover{
   % ----- logo & title
   ~\newline
   \raisebox{3pt}{\includegraphics[width=0.1\textwidth]{pic/hbu-logo.png}}~~~~~~\includegraphics[width=0.26\textwidth]{pic/hbu-title.png}
@@ -236,11 +226,13 @@
   \end{table}
   \clearpage
   % ----- 单双面判断
-  % ~\newpage
+  \ifHBU@opt@double
+    ~\newpage
+  \fi
 }
 
 % ----- 英文封面
-\def\makeEncover{
+\newcommand\makeEncover{
   % \TimesNR
   \zihao{-4}
   \begin{table}[h]
@@ -296,7 +288,7 @@
 }
 
 % ----- 独创性声明 & 知识产权声明
-\def\orgState{
+\newcommand\orgState{
   % ----- 独创性声明
   \begin{center}
     \heiti
@@ -403,6 +395,8 @@
 
 % ==========
 % 中英文摘要
+% \makeabsctract
+% \makeEnabsctract
 % ==========
 
 \newenvironment{abstract}{

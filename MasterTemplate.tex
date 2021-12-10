@@ -1,4 +1,4 @@
-\documentclass[a4paper, 12pt]{HBUThesis}
+\documentclass[a4paper, 12pt, double]{HBUThesis}
 \miji{保密}
 \fenlh{123}
 \xxdaima{10075}
@@ -20,15 +20,29 @@
 \UDC{}
 \usepackage{layout}
 \begin{document}
+
+% 封面
 \makecover
 \makeEncover
 \orgState
 
+% 正文
 你好，世界！
 hello, world
-\bf
-你好，世界！
-hello, world
+\textbf{
+  你好，世界！
+  hello, world
+}
+
+\songti 宋体 \textbf{加粗}
+
+\heiti 黑体 \textbf{加粗}
+
+\fangsong 仿宋 \textbf{加粗}
+
+\kaiti 楷体 \textbf{加粗}
+
+\FZXBSong 方正小标宋 \textbf{加粗}
 
 
 \end{document}
