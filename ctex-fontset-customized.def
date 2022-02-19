@@ -20,10 +20,11 @@
 ]
 \setCJKfamilyfont { FZXBS  } {FZXBSJW.ttf}[
   Path=./fonts/,
+  AutoFakeBold=true,
 ]
 
 \NewDocumentCommand \songti   { } { \CJKfamily { zhsong  } }
 \NewDocumentCommand \heiti    { } { \CJKfamily { zhhei   } }
-\NewDocumentCommand \kaishu   { } { \CJKfamily { zhkai   } }
+\NewDocumentCommand \kaiti    { } { \CJKfamily { zhkai   } }
 \NewDocumentCommand \fangsong { } { \CJKfamily { zhfs    } }
 \NewDocumentCommand \FZXBSong { } { \CJKfamily { FZXBS   } }

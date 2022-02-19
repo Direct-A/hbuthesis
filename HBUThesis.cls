@@ -27,7 +27,7 @@
 \DeclareBoolOption[false]{print}
 \DeclareComplementaryOption{noprint}{print}
 % ----- double/single
-\DeclareBoolOption[true]{double}
+\DeclareBoolOption[false]{single}
 \DeclareComplementaryOption{single}{double}
 % ----- Default Options
 \DeclareDefaultOption{\PassOptionsToPackage{\CurrentOption}{ctexbook}}
@@ -46,7 +46,7 @@
 \ifHBU@opt@double
   \relax% 双面出现空白页
 \else
-  \PassOptionsToClass{openany}{ctexbook}% 单面和电子版没有
+  \ekv[opt@single]% 单面和电子版没有
 \fi
 
 % ================
@@ -166,6 +166,24 @@
 % ----- 表格内换行 -----
 \newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
 
+% ----- 正反打印设置 -----
+% Insert a TRUE blank page which has no header or footer
+\let\origdoublepage\cleardoublepage
+\newcommand{\clearemptydoublepage}{
+    \clearpage{
+        \pagestyle{empty}
+        \origdoublepage
+    }
+}
+% 定义了一种新的clearpage方式，允许一个变量切换电子版及双面打印版
+\newcommand{\newclearpage}{
+    \ifHBU@opt@double
+        \clearemptydoublepage
+    \else
+        \clearpage
+    \fi
+}
+
 
 % =============================
 % 封面
@@ -224,11 +242,8 @@
       \makebox[7em][s]{答\hspace{\fill}辩\hspace{\fill}日\hspace{\fill}期:} & \the\date\\
     \end{tabular}
   \end{table}
-  \clearpage
   % ----- 单双面判断
-  \ifHBU@opt@double
-    ~\newpage
-  \fi
+  \newclearpage
 }
 
 % ----- 英文封面
@@ -282,9 +297,8 @@
     }
   \end{table}
   \songti
-  \clearpage
   % ----- 单双面判断
-  % ~\newpage
+  \newclearpage
 }
 
 % ----- 独创性声明 & 知识产权声明
@@ -350,7 +364,7 @@
     \hspace{\fill}
     日期：\uline{\hspace{4em}}年\uline{\hspace{2em}}月\uline{\hspace{2em}}日
   }
-  \clearpage
+  \newclearpage
   % ----- 知识产权声明
   \begin{center}
     \heiti
@@ -390,7 +404,7 @@
     \hspace{\fill}
     日期：\uline{\hspace{4em}}年\uline{\hspace{2em}}月\uline{\hspace{2em}}日
   }
-  \clearpage
+  \newclearpage
 }
 
 % ==========
